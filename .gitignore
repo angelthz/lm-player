@@ -1,0 +1,16 @@
+#vscode
+.vscode
+
+#repo
+node_modules
+
+#client
+client/node_modules
+client/.tanstack
+
+# server
+server/node_modules
+server/src/public
+
+#build
+build
