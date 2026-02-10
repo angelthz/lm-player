@@ -12,6 +12,7 @@ client/.tanstack
 server/node_modules
 server/src/public
 server/src/db/MV1.db
+server/.env
 
 #build
 build
