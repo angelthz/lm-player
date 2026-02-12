@@ -3,6 +3,10 @@
 //instead instantiate inside service layer
 
 
+import { AlbumModel } from "../album/model/AlbumModel";
+import { GetAlbumById } from "../album/services/GetAlbumById";
+import { GetAlbumSongs } from "../album/services/GetAlbumSongs";
+import { GetAllAlbums } from "../album/services/GetAllAlbums";
 import { SongModel } from "../song/model/SongModel"
 import { AddSongActivity } from "../song/services/AddSongActivity";
 import { GetAllSongs } from "../song/services/GetAllSongs";
@@ -29,6 +33,7 @@ const MusicServices = {
 //song model
 
 const songModel = new SongModel();
+const albumModel = new AlbumModel();
 
 
 const MusicServices = {
@@ -38,7 +43,12 @@ const MusicServices = {
         addActivity: new AddSongActivity(songModel),
         getRecentPlayed: new GetRecentPlayedSongs(songModel),
         getMostPlayed: new GetMostPlayedSongs(songModel),
-    }
+    },
+    album: {
+        getAll: new GetAllAlbums(albumModel),
+        getById: new GetAlbumById(albumModel),
+        getAlbumSongs: new GetAlbumSongs(albumModel)
+    },
 };
 
 

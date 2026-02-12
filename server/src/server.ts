@@ -4,6 +4,7 @@ import fs from "node:fs"
 import morgan from "morgan";
 import cors from "cors";
 import songRouterInit from "./api/public/music/song/controller/SongRouter";
+import { albumRouterInit } from "./api/public/music/album/controller/AlbumRouter";
 
 
 
@@ -19,6 +20,7 @@ function server() {
 
     //api routes
     app.use(songRouterInit());
+    app.use(albumRouterInit());
 
     //index
     app.use(express.static(path.join(__dirname, "public")));
