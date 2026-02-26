@@ -7,6 +7,14 @@ import { AlbumModel } from "../album/model/AlbumModel";
 import { GetAlbumById } from "../album/services/GetAlbumById";
 import { GetAlbumSongs } from "../album/services/GetAlbumSongs";
 import { GetAllAlbums } from "../album/services/GetAllAlbums";
+import { ArtistModel } from "../artist/model/ArtistModel";
+import { GetArtistSongs } from "../artist/services/GerArtistSongs";
+import { GetAllArtists } from "../artist/services/GetAllArtists";
+import { GetArtistAlbums } from "../artist/services/GetArtistAlbums";
+import { GetArtistById } from "../artist/services/GetArtistById";
+import { GetCollaborations } from "../artist/services/GetCollaborations";
+import { GetMostPlayed } from "../artist/services/GetMostPlayed";
+import { GetRecentPlayed } from "../artist/services/GetRecentPlayed";
 import { SongModel } from "../song/model/SongModel"
 import { AddSongActivity } from "../song/services/AddSongActivity";
 import { GetAllSongs } from "../song/services/GetAllSongs";
@@ -34,6 +42,7 @@ const MusicServices = {
 
 const songModel = new SongModel();
 const albumModel = new AlbumModel();
+const artistModel = new ArtistModel();
 
 
 const MusicServices = {
@@ -49,6 +58,15 @@ const MusicServices = {
         getById: new GetAlbumById(albumModel),
         getAlbumSongs: new GetAlbumSongs(albumModel)
     },
+    artist: {
+        getAll: new GetAllArtists(artistModel),
+        getById: new GetArtistById(artistModel),
+        getAlbums: new GetArtistAlbums(artistModel),
+        getSongs: new GetArtistSongs(artistModel),
+        getRecentPlayed: new GetRecentPlayed(artistModel),
+        GetMostPlayed: new GetMostPlayed(artistModel),
+        getArtistAlbumsWithCollaborations: new GetCollaborations(artistModel),
+    }
 };
 
 

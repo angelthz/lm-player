@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cors from "cors";
 import songRouterInit from "./api/public/music/song/controller/SongRouter";
 import { albumRouterInit } from "./api/public/music/album/controller/AlbumRouter";
+import { artistRouterInit } from "./api/public/music/artist/controller/ArtistRouter";
 
 
 
@@ -21,6 +22,7 @@ function server() {
     //api routes
     app.use(songRouterInit());
     app.use(albumRouterInit());
+    app.use(artistRouterInit());
 
     //index
     app.use(express.static(path.join(__dirname, "public")));
