@@ -6,6 +6,7 @@ import cors from "cors";
 import songRouterInit from "./api/public/music/song/controller/SongRouter";
 import { albumRouterInit } from "./api/public/music/album/controller/AlbumRouter";
 import { artistRouterInit } from "./api/public/music/artist/controller/ArtistRouter";
+import { genresRouterInit } from "./api/public/music/genres/controller/GenresRouter";
 
 
 
@@ -23,6 +24,7 @@ function server() {
     app.use(songRouterInit());
     app.use(albumRouterInit());
     app.use(artistRouterInit());
+    app.use(genresRouterInit());
 
     //index
     app.use(express.static(path.join(__dirname, "public")));

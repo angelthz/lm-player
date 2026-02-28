@@ -15,6 +15,9 @@ import { GetArtistById } from "../artist/services/GetArtistById";
 import { GetCollaborations } from "../artist/services/GetCollaborations";
 import { GetMostPlayed } from "../artist/services/GetMostPlayed";
 import { GetRecentPlayed } from "../artist/services/GetRecentPlayed";
+import { GenreModel } from "../genres/model/GenreModel";
+import { GetAllGenres } from "../genres/services/GetAllGenres";
+import { GetSongsByGenre } from "../genres/services/GetSongsByGenre";
 import { SongModel } from "../song/model/SongModel"
 import { AddSongActivity } from "../song/services/AddSongActivity";
 import { GetAllSongs } from "../song/services/GetAllSongs";
@@ -43,6 +46,7 @@ const MusicServices = {
 const songModel = new SongModel();
 const albumModel = new AlbumModel();
 const artistModel = new ArtistModel();
+const genreModel = new GenreModel();
 
 
 const MusicServices = {
@@ -66,6 +70,10 @@ const MusicServices = {
         getRecentPlayed: new GetRecentPlayed(artistModel),
         GetMostPlayed: new GetMostPlayed(artistModel),
         getArtistAlbumsWithCollaborations: new GetCollaborations(artistModel),
+    },
+    genres: {
+        getall: new GetAllGenres(genreModel),
+        getSongsByGenre: new GetSongsByGenre(genreModel),
     }
 };
 
