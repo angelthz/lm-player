@@ -7,6 +7,7 @@ import songRouterInit from "./api/public/music/song/controller/SongRouter";
 import { albumRouterInit } from "./api/public/music/album/controller/AlbumRouter";
 import { artistRouterInit } from "./api/public/music/artist/controller/ArtistRouter";
 import { genresRouterInit } from "./api/public/music/genres/controller/GenresRouter";
+import { webRouterInit } from "./web/public/WebRouter";
 
 
 
@@ -25,6 +26,8 @@ function server() {
     app.use(albumRouterInit());
     app.use(artistRouterInit());
     app.use(genresRouterInit());
+    //web routes stream || download mp3
+    app.use(webRouterInit());
 
     //index
     app.use(express.static(path.join(__dirname, "public")));
