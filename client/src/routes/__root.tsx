@@ -2,8 +2,10 @@ import { Outlet, createRootRouteWithContext, } from '@tanstack/react-router'
 import { QueryClient } from '@tanstack/react-query'
 import { useEffect, } from 'react'
 import { logger } from 'src/utils/Logger'
-// import { TimeUtils } from "@shared/utils/TimeUtils"
-
+import PlayerProvider from 'src/player-context/PlayerProvider'
+import BottomBar from 'src/components/bottom-bar/BottomBar'
+import { FullscreenPlayerContextProvider } from 'src/context/FullscrenPlayerVisibility'
+import { PlaylistVisibilityContextProvider } from 'src/context/PlaylistVisibilityContext'
 
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -18,9 +20,18 @@ function RootComponent() {
   })
 
   return (
-    <main className='w-full h-screen'>
-      <Outlet></Outlet>
-    </main>
+    <PlayerProvider crossOrigin={true}>
+      <FullscreenPlayerContextProvider>
+        <PlaylistVisibilityContextProvider>
+          <div id='main' className='w-full h-auto bg-[#030303] flex'>
+            <div id='app-content' className='min-w-0 h-full grow ' >
+              <Outlet></Outlet>
+            </div>
+          </div>
+          <BottomBar></BottomBar>
+        </PlaylistVisibilityContextProvider>
+      </FullscreenPlayerContextProvider>
+    </PlayerProvider>
   )
 
 }
