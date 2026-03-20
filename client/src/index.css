@@ -18,6 +18,11 @@
   --font-asap: "Asap", sans-serif;
   --font-inter: "Inter", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
+
+  /* custom breakpoints */
+  --breakpoint-desktop: 1200px;
+  --breakpoint-xs: 540px;
+
 }
 
 
@@ -171,4 +176,87 @@ input[type="range"]:active::-moz-range-progress {
 
 input[type="range"]:disabled::-moz-range-thumb {
   cursor: not-allowed;
+}
+
+
+/* MARK: Scrollbars */
+
+html {
+  --body-scrollbar-track-bg: #131313;
+  --body-scrollbar-thumb-bg: #535353;
+  --sb-size: 8px;
+}
+
+.scrollbar-md::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollbar-md::-webkit-scrollbar-track {
+  background: var(--body-scrollbar-track-bg);
+}
+
+.scrollbar-md::-webkit-scrollbar-thumb {
+  background: var(--body-scrollbar-thumb-bg);
+  border-radius: 3px;
+  border: 1px solid var(--body-scrollbar-track-bg);
+  background-clip: content-box;
+}
+
+.scrollbar-md::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a;
+}
+
+.scrollbar-md::-webkit-scrollbar-button {
+  background: var(--body-scrollbar-track-bg);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 8px;
+
+  -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.scrollbar-md::-webkit-scrollbar-button:end:increment {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCA0MDQuMzA4IDQwNC4zMDkiID4KCTxwYXRoIGQ9Ik0wLDEwMS4wOGg0MDQuMzA4TDIwMi4xNTEsMzAzLjIyOUwwLDEwMS4wOHoiIGZpbGw9IiM1MzUzNTMiLz4KPC9zdmc+Cg==);
+}
+
+.scrollbar-md::-webkit-scrollbar-button:start:decrement {
+  background-image: url(data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDI1NSAyNTUiID4KICA8cG9seWdvbiBwb2ludHM9IjAsMTkxLjI1IDEyNy41LDYzLjc1IDI1NSwxOTEuMjUgICAiIGZpbGw9IiM1MzUzNTMiLz4KPC9zdmc+Cg==)
+}
+
+
+.scrollbar-xs::-webkit-scrollbar {
+  width: 8px;
+  /* border: 1px solid white; */
+}
+
+.scrollbar-xs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-xs::-webkit-scrollbar-thumb {
+  background: var(--body-scrollbar-thumb-bg);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar-xs::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+
+
+.scrollbar-hide {
+  -ms-overflow-style: none !important;
+  /* Internet Explorer and Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+  /* Chrome, Safari, and Opera */
 }

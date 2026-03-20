@@ -24,7 +24,7 @@ function RootComponent() {
       <FullscreenPlayerContextProvider>
         <PlaylistVisibilityContextProvider>
           <div id='main' className='w-full h-auto bg-[#030303] flex'>
-            <div id='app-content' className='min-w-0 h-full grow ' >
+            <div id='app-content' className='min-w-0 h-full grow pb-[150px] md:pb-[88px]' >
               <Outlet></Outlet>
             </div>
           </div>
