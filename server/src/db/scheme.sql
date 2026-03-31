@@ -109,6 +109,8 @@ END;
 
 
 
+-- MARK: VIEWS
+
 -- MARK: SONG DETAILS
 
 DROP VIEW IF EXISTS view_song_details;
@@ -300,7 +302,8 @@ SELECT
       'x128', ar.x128,
       'x256', ar.x256,
       'x512', ar.x512,
-      'x1200', ar.x1200  
+      'x1200', ar.x1200,  
+      'x1800', ar.x1800  
     ) as photo,
     ar.is_favorite,
     count(ad.album_id) as albums_count,
@@ -328,3 +331,45 @@ LEFT JOIN album_details as ad on ad.album_id = al.id
 GROUP BY ar.id;
 
 -- SELECT * FROM view_artist_details WHERE artist_id = 16;
+
+
+
+-- MARK: ALBUM COLLABS
+
+DROP VIEW view_artist_albums_collaborations;
+CREATE VIEW view_artist_albums_collaborations AS
+WITH song_collaborators AS (
+    SELECT 
+        co.song_id, 
+        json_group_array(json_object('id', car.id, 'name', car.name) ) AS collaborators
+    FROM collaborations co
+        INNER JOIN artist AS mar ON mar.id = co.main_id
+        INNER JOIN artist as car ON car.id = co.collaborator_id
+    GROUP BY co.song_id
+)
+SELECT 
+    al.id as album_id,
+    al.name as album_name,
+    al.release_year,
+    mar.id as main_artist_id,
+    mar.name as main_artist_name,
+    sc.collaborators,
+    json_object(
+      'x64',al.x64,
+      'x128', al.x128,
+      'x256', al.x256,
+      'x512', al.x512,
+      'x1200', al.x1200  
+    ) as cover,
+    cb.collaborator_id,
+    car.name as collaborator_name
+FROM collaborations as cb
+    INNER JOIN artist as mar on mar.id = cb.main_id
+    INNER JOIN song as so on so.id = cb.song_id
+    INNER JOIN album as al on al.id = so.album_id
+    INNER JOIN artist as car on car.id = cb.collaborator_id
+    INNER JOIN song_collaborators as sc on sc.song_id = cb.song_id
+ORDER BY al.release_year DESC;
+
+
+-- SELECT *FROM view_artist_albums_collaborations;

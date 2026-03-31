@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/db/CreateDatabase.ts &&  ts-node-dev --respawn --transpile-only --env-file=.env src/server.ts",
+    "dev": "ts-node-dev src/db/CreateDatabase.ts --env-file=.env src/scrapper/ScrapeTracks.ts && ts-node-dev --respawn --transpile-only --env-file=.env src/server.ts",
     "run": "ts-node-dev --env-file=.env src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
