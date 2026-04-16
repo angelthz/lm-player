@@ -12,8 +12,6 @@ export class GetSongsByGenre extends PaginatedService<GenreModel, Partial<SongDT
         let { limit, offset } = this.getPaginationValues(qParams.limit, qParams.offset);
         let query = await this.model.getSongsByGenre(rParams.id, limit, offset);
 
-        // console.log(query)
-
         if (this.hasFilters(qParams))
             return query.map(row => SongDTO.parse(row)).map(dto => this.applyFilters(dto, qParams));
         else

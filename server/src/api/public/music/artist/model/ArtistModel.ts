@@ -41,7 +41,10 @@ export class ArtistModel {
                 LIMIT (?)
                 OFFSET (?)    
             `);
+            console.log("params-> ")
 
+            console.log("limit-> ", limit)
+            console.log("offset-> ", offset)
             let res = stmt.all(limit, offset);
 
             return res as ArtistRow[];

@@ -18,6 +18,4 @@ export const FetchSong = {
         const json = await req.json();
         return json as SongDTO[];
     }
-
-
 }
