@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SongsIndexRouteImport } from './routes/songs/index'
 import { Route as GenresIndexRouteImport } from './routes/genres/index'
 import { Route as ArtistsIndexRouteImport } from './routes/artists/index'
 import { Route as AlbumsIndexRouteImport } from './routes/albums/index'
@@ -20,6 +21,11 @@ import { Route as AlbumsAlbumIdAlbumNameRouteImport } from './routes/albums/$alb
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SongsIndexRoute = SongsIndexRouteImport.update({
+  id: '/songs/',
+  path: '/songs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GenresIndexRoute = GenresIndexRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/albums/': typeof AlbumsIndexRoute
   '/artists/': typeof ArtistsIndexRoute
   '/genres/': typeof GenresIndexRoute
+  '/songs/': typeof SongsIndexRoute
   '/albums/$albumId/$albumName': typeof AlbumsAlbumIdAlbumNameRoute
   '/artists/$artistId/$artistName': typeof ArtistsArtistIdArtistNameRoute
   '/genres/$genreId/$genreName': typeof GenresGenreIdGenreNameRoute
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/albums': typeof AlbumsIndexRoute
   '/artists': typeof ArtistsIndexRoute
   '/genres': typeof GenresIndexRoute
+  '/songs': typeof SongsIndexRoute
   '/albums/$albumId/$albumName': typeof AlbumsAlbumIdAlbumNameRoute
   '/artists/$artistId/$artistName': typeof ArtistsArtistIdArtistNameRoute
   '/genres/$genreId/$genreName': typeof GenresGenreIdGenreNameRoute
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/albums/': typeof AlbumsIndexRoute
   '/artists/': typeof ArtistsIndexRoute
   '/genres/': typeof GenresIndexRoute
+  '/songs/': typeof SongsIndexRoute
   '/albums/$albumId/$albumName': typeof AlbumsAlbumIdAlbumNameRoute
   '/artists/$artistId/$artistName': typeof ArtistsArtistIdArtistNameRoute
   '/genres/$genreId/$genreName': typeof GenresGenreIdGenreNameRoute
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/albums/'
     | '/artists/'
     | '/genres/'
+    | '/songs/'
     | '/albums/$albumId/$albumName'
     | '/artists/$artistId/$artistName'
     | '/genres/$genreId/$genreName'
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/albums'
     | '/artists'
     | '/genres'
+    | '/songs'
     | '/albums/$albumId/$albumName'
     | '/artists/$artistId/$artistName'
     | '/genres/$genreId/$genreName'
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/albums/'
     | '/artists/'
     | '/genres/'
+    | '/songs/'
     | '/albums/$albumId/$albumName'
     | '/artists/$artistId/$artistName'
     | '/genres/$genreId/$genreName'
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   AlbumsIndexRoute: typeof AlbumsIndexRoute
   ArtistsIndexRoute: typeof ArtistsIndexRoute
   GenresIndexRoute: typeof GenresIndexRoute
+  SongsIndexRoute: typeof SongsIndexRoute
   AlbumsAlbumIdAlbumNameRoute: typeof AlbumsAlbumIdAlbumNameRoute
   ArtistsArtistIdArtistNameRoute: typeof ArtistsArtistIdArtistNameRoute
   GenresGenreIdGenreNameRoute: typeof GenresGenreIdGenreNameRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/songs/': {
+      id: '/songs/'
+      path: '/songs'
+      fullPath: '/songs/'
+      preLoaderRoute: typeof SongsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/genres/': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlbumsIndexRoute: AlbumsIndexRoute,
   ArtistsIndexRoute: ArtistsIndexRoute,
   GenresIndexRoute: GenresIndexRoute,
+  SongsIndexRoute: SongsIndexRoute,
   AlbumsAlbumIdAlbumNameRoute: AlbumsAlbumIdAlbumNameRoute,
   ArtistsArtistIdArtistNameRoute: ArtistsArtistIdArtistNameRoute,
   GenresGenreIdGenreNameRoute: GenresGenreIdGenreNameRoute,
