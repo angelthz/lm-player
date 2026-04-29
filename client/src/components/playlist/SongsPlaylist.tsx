@@ -151,7 +151,7 @@ export default function SongsPlaylist(props: PlayListProps) {
 
     return (
         <div className="">
-            <div className="mb-4 text-sm font-medium text-woodsmoke-200 border-b border-woodsmoke-200/25 py-2">
+            <div className="mb-4 text-sm font-medium text-woodsmoke-200 border-b border-white/25 py-2">
                 <div className="
                     grid 
                     grid-cols-[repeat(2,48px)_repeat(7,1fr)_72px_repeat(2,48px)] 

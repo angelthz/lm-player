@@ -61,7 +61,7 @@ function RouteComponent() {
         <div className="px-4 md:px-8 pt-8 pb-14">
             <section className="header relative">
                 <header className="my-4">
-                    <h2 className="text-4xl font-semibold ">Songs</h2>
+                    <h2 className="text-4xl font-semibold uppercase">{genreName}</h2>
                 </header>
             </section>
             <section className="playlist-content">

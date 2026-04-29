@@ -52,10 +52,10 @@ export default function ArtistCover({ src }: Props) {
         if (bgRef.current)
             observer.observe(bgRef.current);
 
-        document.body.style.setProperty("--global-border", `rgba(255,255,255,0)`)
+        document.body.style.setProperty("--active-border", `rgba(255,255,255,0)`)
         return () => {
             observer.disconnect();
-            document.body.style.setProperty("--global-border", `rgba(255,255,255,0.10)`)
+            document.body.style.setProperty("--active-border", `rgba(255,255,255,0.10)`)
             // document.body.style.setProperty("--active-bg", `rgba(3,3,3,0)`)
             // document.body.style.setProperty("--active-border", `1px solid rgba(35,35,35,0)`)
             // document.body.style.setProperty("--active-color", `rgba(35,35,35,1)`)

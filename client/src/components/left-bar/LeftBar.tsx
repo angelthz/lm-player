@@ -19,7 +19,7 @@ export default function LeftBar() {
     return (
         <div id='navigation-bar' className={`${isOpened ? "xl:w-[240px]" : "xl:w-[72px]"} w-[72px]  h-auto relative flex-[0_0_auto] hidden sm:block border-r border-(--active-border) `}>
 
-            <div id="left-container" className='w-full h-[calc(100vh-90px)] sticky top-0 z-2'>
+            <div id="left-container" className='w-full h-screen sticky top-0 z-2 pb-[90px]'>
                 <header className="w-full h-full  flex flex-col ">
                     <div id='title' className={`w-full h-[84px] relative flex justify-center items-center `}>
                         <button className='hidden xl:block absolute top-0 left-0 w-fit h-full cursor-pointer group' onClick={() => setIsOpened(prev => !prev)}>

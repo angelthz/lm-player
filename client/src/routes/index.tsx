@@ -11,7 +11,7 @@ const queryHomeOptions = queryOptions({
         let [recentPlayed, mostPlayed] = await Promise.all([FetchSong.getRecentPlayed(), FetchSong.getMostPlayed()]);
         return { recentPlayed, mostPlayed };
     },
-    staleTime: 1000 * 60 * 5, //five minutes
+    staleTime: 1000 * 60 * 3, //five minutes
 })
 
 export const Route = createFileRoute('/')({
@@ -19,7 +19,7 @@ export const Route = createFileRoute('/')({
     loader: ({ context: { queryClient } }) => {
         return queryClient.ensureQueryData(queryHomeOptions)
     },
-    staleTime: 1000 * 60 * 5, //five minutes
+    staleTime: 1000 * 60 * 3, //five minutes
 })
 
 function RouteComponent() {
@@ -27,7 +27,7 @@ function RouteComponent() {
 
 
     return (
-        <div className="w-full mx-auto relative px-4 md:px-8 py-8" >
+        <div className="w-full mx-auto relative px-4 md:px-8 py-8 " >
             <section id='recent-played' className="">
                 {
                     data?.recentPlayed &&
