@@ -1,6 +1,6 @@
 import { Outlet, createRootRouteWithContext, } from '@tanstack/react-router'
 import { QueryClient } from '@tanstack/react-query'
-import { useEffect, } from 'react'
+import { useEffect, useState, } from 'react'
 import { logger } from 'src/utils/Logger'
 import PlayerProvider from 'src/player-context/PlayerProvider'
 import BottomBar from 'src/components/bottom-bar/BottomBar'
@@ -9,6 +9,7 @@ import { PlaylistVisibilityContextProvider } from 'src/context/PlaylistVisibilit
 import LeftBar from 'src/components/left-bar/LeftBar'
 import RightBar from 'src/components/right-bar/RightBar'
 import { FullscreenPlayer } from 'src/components/full-screen-player/FullScreenPlayer'
+import SplashScreen from 'src/components/splash-screen/SplashScreen'
 
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -17,6 +18,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 
 function RootComponent() {
+  const [splashVisible, setSplashVisible] = useState(true);
+  useEffect(() => {
+    let id = setTimeout(() => {
+      setSplashVisible(false)
+    }, (5000));
+    return () => {
+      clearTimeout(id);
+    }
+  }, [])
+
   useEffect(() => {
     console.log("%c-> Rendering App", 'background: #1a1a1a; color: #ff00ff; font-weight:700;');
     logger.log("Hello Dev");
@@ -24,21 +35,24 @@ function RootComponent() {
   })
 
   return (
-    <PlayerProvider crossOrigin={true}>
-      <FullscreenPlayerContextProvider>
-        <PlaylistVisibilityContextProvider>
-          <div id='main' className='w-full h-auto bg-[#030303] flex'>
-            <LeftBar></LeftBar>
-            <div id='app-content' className='min-w-0 h-full grow pb-[150px] md:pb-[88px]' >
-              <Outlet></Outlet>
+    splashVisible ?
+      <SplashScreen ></SplashScreen>
+      :
+      <PlayerProvider crossOrigin={true}>
+        <FullscreenPlayerContextProvider>
+          <PlaylistVisibilityContextProvider>
+            <div id='main' className='w-full h-auto bg-[#030303] flex'>
+              <LeftBar></LeftBar>
+              <div id='app-content' className='min-w-0 h-full grow pb-[150px] md:pb-[88px]' >
+                <Outlet></Outlet>
+              </div>
+              <RightBar></RightBar>
             </div>
-            <RightBar></RightBar>
-          </div>
-          <BottomBar></BottomBar>
-          <FullscreenPlayer></FullscreenPlayer>
-        </PlaylistVisibilityContextProvider>
-      </FullscreenPlayerContextProvider>
-    </PlayerProvider>
+            <BottomBar></BottomBar>
+            <FullscreenPlayer></FullscreenPlayer>
+          </PlaylistVisibilityContextProvider>
+        </FullscreenPlayerContextProvider>
+      </PlayerProvider>
   )
 
 }
