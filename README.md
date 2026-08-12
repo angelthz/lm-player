@@ -41,24 +41,24 @@ LM Player is Full Stack application to play your music through the Web.
 **Home Page**
 
 
-<img alt="Home Page" src="images/mobile/localhost_3000_Pixel-10-1.png" width="30%">
+<img alt="Home Page" src="images/mobile/localhost_3000_Pixel-10-1.png" width="40%">
 
 
 **Albums Page**
 
-<img alt="Albums Page" src="images/mobile/localhost_3000_Pixel-10-2.png" width="30%">
+<img alt="Albums Page" src="images/mobile/localhost_3000_Pixel-10-2.png" width="40%">
 
 
 
 **Artist Page**
 
-<img alt="Artist Page" src="images/mobile/localhost_3000_Pixel-10-3.png" width="30%">
+<img alt="Artist Page" src="images/mobile/localhost_3000_Pixel-10-3.png" width="40%">
 
 
 **Album Page**
 
-<img alt="Album Page" src="images/mobile/localhost_3000_Pixel-10-4.png" width="30%">
+<img alt="Album Page" src="images/mobile/localhost_3000_Pixel-10-4.png" width="40%">
 
 **Full Screen Player**
 
-<img alt="Full Screen Player" src="images/mobile/localhost_3000_Pixel-10-5.png" width="30%">
+<img alt="Full Screen Player" src="images/mobile/localhost_3000_Pixel-10-5.png" width="40%">
